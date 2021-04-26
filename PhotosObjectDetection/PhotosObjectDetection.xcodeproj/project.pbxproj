@@ -13,6 +13,7 @@
 		5B80F5752636965B00650A11 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5742636965B00650A11 /* NetworkService.swift */; };
 		5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F57A26369A9100650A11 /* PhotoListRequest.swift */; };
 		5B80F57F26369AA200650A11 /* PhotoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F57E26369AA200650A11 /* PhotoListResponse.swift */; };
+		5B80F58726369E9C00650A11 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F58626369E9C00650A11 /* Photo.swift */; };
 		5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */; };
 		5BDA2E3326368D77009E6AD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */; };
 		5BDA2E3526368D77009E6AD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3426368D77009E6AD3 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		5B80F5742636965B00650A11 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5B80F57A26369A9100650A11 /* PhotoListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListRequest.swift; sourceTree = "<group>"; };
 		5B80F57E26369AA200650A11 /* PhotoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListResponse.swift; sourceTree = "<group>"; };
+		5B80F58626369E9C00650A11 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5BDA2E2D26368D77009E6AD3 /* PhotosObjectDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosObjectDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			path = ResponseModels;
 			sourceTree = "<group>";
 		};
+		5B80F58526369E8A00650A11 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F58626369E9C00650A11 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5BDA2E2426368D77009E6AD3 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 				5BDA2E4726368D93009E6AD3 /* App */,
 				5BDA2E4B26368E21009E6AD3 /* MLMpdels */,
 				5B80F5662636958000650A11 /* NetworkLayer */,
+				5B80F58526369E8A00650A11 /* Models */,
 				5BDA2E3426368D77009E6AD3 /* ViewController.swift */,
 				5BDA2E3926368D79009E6AD3 /* Assets.xcassets */,
 			);
@@ -217,6 +228,7 @@
 				5BDA2E4D26368E3B009E6AD3 /* YOLOv3.mlkitmodel in Sources */,
 				5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */,
 				5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */,
+				5B80F58726369E9C00650A11 /* Photo.swift in Sources */,
 				5B80F570263695D800650A11 /* APIRequest.swift in Sources */,
 				5BDA2E3326368D77009E6AD3 /* SceneDelegate.swift in Sources */,
 				5B80F56D263695C500650A11 /* APIPaths.swift in Sources */,

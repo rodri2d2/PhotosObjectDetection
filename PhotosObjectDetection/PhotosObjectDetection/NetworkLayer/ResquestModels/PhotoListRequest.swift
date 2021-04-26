@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+struct PhotoListRequest: APIRequest {
+    var http: HTTPMethod = .get
+    var path: String     = APIPath.main.path
+    typealias Response   = [Photo]
+}
