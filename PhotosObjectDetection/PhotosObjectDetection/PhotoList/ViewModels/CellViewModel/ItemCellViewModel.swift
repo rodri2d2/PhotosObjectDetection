@@ -10,20 +10,32 @@ import Foundation
 
 class ItemCellViewModel{
     
-    var delegate:   ItemCellViewModelDelegate?
-    var photo:      Data?
-    let authorText: String
-    
-    
+    var delegate:    ItemCellViewModelDelegate?
+    let authorText:  String
+    let photo:       Photo
+    var photoData:   Data?
     
     init(photo: Photo, dataManager: PhotoDataManagerProtocol){
-        self.authorText = photo.author
-        dataManager.fetchImage(imageUrl: photo.url, id: photo.id, size1: 300, size2: 300) { (data) in
-            DispatchQueue.main.async {
-                self.photo = data
-                self.delegate?.didFinishLoadImageData()
-            }
+        self.photo = photo
+        self.authorText = self.photo.author
+        
+        let imageUrl = self.generatePhotoURL(size1: 300, size2: 300)
+
+        dataManager.fetchImage(imageUrl: imageUrl) { (data) in
+            self.photoData = data
+
+            self.delegate?.didFinishLoadImageData()
         }
+        
     }
-    
+
+    private func generatePhotoURL(size1: Int, size2: Int) -> String{
+        
+        var url = APIPath.photoPath.path
+        url.append("\(self.photo.id)/")
+        url.append("\(size1)/")
+        url.append("\(size1)")
+        
+        return url
+    }
 }

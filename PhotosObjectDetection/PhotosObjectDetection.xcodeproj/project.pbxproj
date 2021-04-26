@@ -31,6 +31,7 @@
 		5BDA2E3A26368D79009E6AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3926368D79009E6AD3 /* Assets.xcassets */; };
 		5BDA2E3D26368D79009E6AD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3B26368D79009E6AD3 /* LaunchScreen.storyboard */; };
 		5BDA2E4D26368E3B009E6AD3 /* YOLOv3.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E4C26368E3B009E6AD3 /* YOLOv3.mlkitmodel */; };
+		5BEB066B2636CF5F00557AC6 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB066A2636CF5F00557AC6 /* UIColor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		5BDA2E3C26368D79009E6AD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BDA2E3E26368D79009E6AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BDA2E4C26368E3B009E6AD3 /* YOLOv3.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3.mlkitmodel; sourceTree = "<group>"; };
+		5BEB066A2636CF5F00557AC6 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				5B80F5B72636AE0D00650A11 /* UIView+Ext.swift */,
+				5BEB066A2636CF5F00557AC6 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				5B80F5AD2636AC8E00650A11 /* PhotoListViewModelDelegate.swift in Sources */,
 				5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */,
 				5B80F5BD2636AF4B00650A11 /* ItemCellViewModel.swift in Sources */,
+				5BEB066B2636CF5F00557AC6 /* UIColor+Ext.swift in Sources */,
 				5B80F5972636A5E300650A11 /* MainDataManager.swift in Sources */,
 				5B80F5C02636B4F300650A11 /* ItemCell.swift in Sources */,
 				5B80F5C32636B69500650A11 /* itemCellViewModelDelegate.swift in Sources */,

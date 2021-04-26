@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     private lazy var photoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.delegate   = self
         view.dataSource = self
-        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        view.register(ItemCell.self, forCellWithReuseIdentifier: "cell")
         return view
     }()
-        
+    
     private lazy var searchBar:UISearchBar = {
         let view = UISearchBar()
         return view
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
     init(viewModel: PhotoListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+        self.viewModel.viewWasLoad()
     }
     
     required init?(coder: NSCoder) {
@@ -43,8 +46,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel.delegate = self
-        self.viewModel.viewWasLoad()
+
         
     }
     
@@ -109,9 +111,16 @@ extension ViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .blue
-        return cell
+  
+        if let cellViewModel = viewModel.cellForItemAt(indexPath: indexPath){
+                
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ItemCell{
+                cell.viewModel = cellViewModel
+                return cell
+            }
+
+        }
+        fatalError()
     }
 }
 
@@ -128,7 +137,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width  =  self.view.bounds.width - 32
-        let height = self.view.bounds.height * 0.7 //60% of
+        let height = self.view.bounds.height * 0.45 //% of
         let size = CGSize(width: width, height: height)
     
         return size

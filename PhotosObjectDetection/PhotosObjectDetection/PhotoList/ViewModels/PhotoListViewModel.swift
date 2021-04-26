@@ -11,8 +11,8 @@ import Foundation
 class PhotoListViewModel{
     
     // MARK: - Class properties
-    let dataManager: MainDataManager
-    var delegate:    PhotoListViewModelDelegate?
+    let dataManager:               MainDataManager
+    var delegate:                  PhotoListViewModelDelegate?
     private var itemCellViewModel: [ItemCellViewModel] = []
     
     init(dataManager: MainDataManager) {
@@ -45,17 +45,17 @@ class PhotoListViewModel{
 // MARK: - Extension to serve Views/Controllers demands
 extension PhotoListViewModel{
     
-
     func viewWasLoad(){
         loadData()
+    }
+    
+    func numberOfItemsInSection() -> Int {
+        return self.itemCellViewModel.count
     }
     
     func cellForItemAt(indexPath: IndexPath) -> ItemCellViewModel?{
         guard indexPath.row < itemCellViewModel.count else { return nil }
         return itemCellViewModel[indexPath.row]
     }
-    
-    func numberOfItemsInSection() -> Int {
-        return self.itemCellViewModel.count
-    }
+
 }

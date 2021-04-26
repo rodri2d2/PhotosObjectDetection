@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ImageDownloadService {
-    func fetchImage(imageUrl: String, id: String, size1: Int, size2: Int, completion: @escaping (_ imageData: Data)-> ())
+    func fetchImage(imageUrl: String, completion: @escaping (_ imageData: Data)-> ())
 }

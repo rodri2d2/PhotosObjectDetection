@@ -28,7 +28,7 @@ extension MainDataManager: PhotoDataManagerProtocol{
 
 // MARK: - Extension for 
 extension MainDataManager: ImageDownloadService{
-    func fetchImage(imageUrl: String, id: String, size1: Int, size2: Int, completion: @escaping (Data) -> ()) {
-        self.remoteManager.fetchImage(imageUrl: imageUrl, id: id, size1: size1, size2: size2, completion: completion)
+    func fetchImage(imageUrl: String, completion: @escaping (Data) -> ()) {
+        self.remoteManager.fetchImage(imageUrl: imageUrl, completion: completion)
     }
 }

@@ -27,13 +27,8 @@ extension RemoteDataManagerImpl: RemoteDataManagerProtocol{
     }
     
     
-    func fetchImage(imageUrl: String, id: String, size1: Int, size2: Int, completion: @escaping (Data) -> ()) {
-        
-        var sanatizedImageUrl = imageUrl.replacingOccurrences(of: "{0}", with: "\(id)")
-        sanatizedImageUrl = sanatizedImageUrl.replacingOccurrences(of: "{size1}", with: "\(size1)")
-        sanatizedImageUrl = sanatizedImageUrl.replacingOccurrences(of: "{size2}", with: "\(size2)")
-        
-        self.networkService.fetchImage(imageUrl: sanatizedImageUrl, completion: completion)
+    func fetchImage(imageUrl: String, completion: @escaping (Data) -> ()) {
+        self.networkService.fetchImage(imageUrl: imageUrl, completion: completion)
     }
 }
 
