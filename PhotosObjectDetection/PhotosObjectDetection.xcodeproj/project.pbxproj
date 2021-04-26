@@ -19,6 +19,12 @@
 		5B80F5972636A5E300650A11 /* MainDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5962636A5E300650A11 /* MainDataManager.swift */; };
 		5B80F59A2636A61A00650A11 /* PhotoDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5992636A61A00650A11 /* PhotoDataManagerProtocol.swift */; };
 		5B80F59D2636A69300650A11 /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F59C2636A69300650A11 /* ImageDownloadService.swift */; };
+		5B80F5A92636AC7E00650A11 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5A82636AC7E00650A11 /* PhotoListViewModel.swift */; };
+		5B80F5AD2636AC8E00650A11 /* PhotoListViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5AC2636AC8E00650A11 /* PhotoListViewModelDelegate.swift */; };
+		5B80F5B82636AE0D00650A11 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5B72636AE0D00650A11 /* UIView+Ext.swift */; };
+		5B80F5BD2636AF4B00650A11 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5BC2636AF4B00650A11 /* ItemCellViewModel.swift */; };
+		5B80F5C02636B4F300650A11 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5BF2636B4F200650A11 /* ItemCell.swift */; };
+		5B80F5C32636B69500650A11 /* itemCellViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5C22636B69500650A11 /* itemCellViewModelDelegate.swift */; };
 		5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */; };
 		5BDA2E3326368D77009E6AD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */; };
 		5BDA2E3526368D77009E6AD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3426368D77009E6AD3 /* ViewController.swift */; };
@@ -40,6 +46,12 @@
 		5B80F5962636A5E300650A11 /* MainDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataManager.swift; sourceTree = "<group>"; };
 		5B80F5992636A61A00650A11 /* PhotoDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataManagerProtocol.swift; sourceTree = "<group>"; };
 		5B80F59C2636A69300650A11 /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
+		5B80F5A82636AC7E00650A11 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		5B80F5AC2636AC8E00650A11 /* PhotoListViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModelDelegate.swift; sourceTree = "<group>"; };
+		5B80F5B72636AE0D00650A11 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5B80F5BC2636AF4B00650A11 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		5B80F5BF2636B4F200650A11 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		5B80F5C22636B69500650A11 /* itemCellViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemCellViewModelDelegate.swift; sourceTree = "<group>"; };
 		5BDA2E2D26368D77009E6AD3 /* PhotosObjectDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosObjectDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +146,67 @@
 			path = Remote;
 			sourceTree = "<group>";
 		};
+		5B80F5A52636AC4300650A11 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5BB2636AF1800650A11 /* CellViewModel */,
+				5B80F5A82636AC7E00650A11 /* PhotoListViewModel.swift */,
+				5B80F5AC2636AC8E00650A11 /* PhotoListViewModelDelegate.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B80F5A62636AC4B00650A11 /* PhotoList */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5B22636AD7600650A11 /* Controllers */,
+				5B80F58526369E8A00650A11 /* Models */,
+				5B80F5B42636AD8B00650A11 /* Views */,
+				5B80F5A52636AC4300650A11 /* ViewModels */,
+			);
+			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		5B80F5A72636AC6300650A11 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
+		5B80F5B22636AD7600650A11 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BDA2E3426368D77009E6AD3 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5B80F5B42636AD8B00650A11 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5BF2636B4F200650A11 /* ItemCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B80F5B62636ADFD00650A11 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5B72636AE0D00650A11 /* UIView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B80F5BB2636AF1800650A11 /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5BC2636AF4B00650A11 /* ItemCellViewModel.swift */,
+				5B80F5C22636B69500650A11 /* itemCellViewModelDelegate.swift */,
+			);
+			path = CellViewModel;
+			sourceTree = "<group>";
+		};
 		5BDA2E2426368D77009E6AD3 = {
 			isa = PBXGroup;
 			children = (
@@ -154,11 +227,12 @@
 			isa = PBXGroup;
 			children = (
 				5BDA2E4726368D93009E6AD3 /* App */,
+				5B80F5B62636ADFD00650A11 /* Extensions */,
 				5BDA2E4B26368E21009E6AD3 /* MLMpdels */,
 				5B80F5662636958000650A11 /* NetworkLayer */,
 				5B80F58B2636A14700650A11 /* DataMangers */,
-				5B80F58526369E8A00650A11 /* Models */,
-				5BDA2E3426368D77009E6AD3 /* ViewController.swift */,
+				5B80F5A62636AC4B00650A11 /* PhotoList */,
+				5B80F5A72636AC6300650A11 /* PhotoDetail */,
 				5BDA2E3926368D79009E6AD3 /* Assets.xcassets */,
 			);
 			path = PhotosObjectDetection;
@@ -258,10 +332,16 @@
 				5B80F569263695BA00650A11 /* APIMethods.swift in Sources */,
 				5B80F5752636965B00650A11 /* NetworkService.swift in Sources */,
 				5BDA2E4D26368E3B009E6AD3 /* YOLOv3.mlkitmodel in Sources */,
+				5B80F5B82636AE0D00650A11 /* UIView+Ext.swift in Sources */,
+				5B80F5AD2636AC8E00650A11 /* PhotoListViewModelDelegate.swift in Sources */,
 				5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */,
+				5B80F5BD2636AF4B00650A11 /* ItemCellViewModel.swift in Sources */,
 				5B80F5972636A5E300650A11 /* MainDataManager.swift in Sources */,
+				5B80F5C02636B4F300650A11 /* ItemCell.swift in Sources */,
+				5B80F5C32636B69500650A11 /* itemCellViewModelDelegate.swift in Sources */,
 				5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */,
 				5B80F5922636A19300650A11 /* RemoteDataManagerImpl.swift in Sources */,
+				5B80F5A92636AC7E00650A11 /* PhotoListViewModel.swift in Sources */,
 				5B80F58726369E9C00650A11 /* Photo.swift in Sources */,
 				5B80F570263695D800650A11 /* APIRequest.swift in Sources */,
 				5B80F59A2636A61A00650A11 /* PhotoDataManagerProtocol.swift in Sources */,
