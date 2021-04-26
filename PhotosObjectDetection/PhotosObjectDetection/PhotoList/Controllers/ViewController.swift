@@ -105,7 +105,7 @@ extension ViewController: UISearchBarDelegate{
 extension ViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          return 10
+        return self.viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -140,6 +140,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 extension ViewController: PhotoListViewModelDelegate{
     func didFinishLoadPhotos() {
-        
+        self.photoCollectionView.reloadData()
     }
 }

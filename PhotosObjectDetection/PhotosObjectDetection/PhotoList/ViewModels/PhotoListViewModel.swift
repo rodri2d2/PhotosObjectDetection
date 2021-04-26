@@ -37,6 +37,7 @@ class PhotoListViewModel{
         self.itemCellViewModel = photListData.map({ (photo) -> ItemCellViewModel in
             ItemCellViewModel(photo: photo, dataManager: self.dataManager)
         })
+        self.delegate?.didFinishLoadPhotos()
     }
     
 }

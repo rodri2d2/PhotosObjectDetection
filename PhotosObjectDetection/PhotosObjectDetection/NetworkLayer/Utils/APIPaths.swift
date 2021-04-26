@@ -11,7 +11,8 @@ import Foundation
 ///Enum to avoid typo errors. Regiter path before use it.
 enum APIPath: String {
     
-    case main           = "https://picsum.photos/v2/list?page=1&limit=100"
+    case main           = "https://picsum.photos"
+    case photoList      = "/list"
     case photoDetail    = "https://picsum.photos/id/{0}/{size1}/{size2}"
     
     var path: String{ return self.rawValue }

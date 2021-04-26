@@ -23,7 +23,6 @@ extension NetworkService{
     func fetchData<T: APIRequest>(this resquest: T, for completion: @escaping(Result<T.Response?, Error>) -> Void){
 
         let request = resquest.baseRequest()
-        
         let task = session.dataTask(with: request) { (data, response, error) in
             
             //Error
@@ -36,7 +35,7 @@ extension NetworkService{
             
             //Data
             if let data = data{
-                
+            
                 do {
                     let model = try JSONDecoder().decode(T.Response.self, from: data)
                     DispatchQueue.main.async {

@@ -9,7 +9,19 @@ import Foundation
 
 
 struct PhotoListRequest: APIRequest {
-    var http: HTTPMethod = .get
-    var path: String     = APIPath.main.path
+    
     typealias Response   = [Photo]
+    var http: HTTPMethod = .get
+    var path: String     = APIPath.photoList.path
+    var parameters: [String : String] = [:]
+    
+    init(){
+        setParameters()
+    }
+    
+    private mutating func setParameters(){
+        parameters["page"] = "1"
+        parameters["limit"]  = "100"
+    }
+    
 }
