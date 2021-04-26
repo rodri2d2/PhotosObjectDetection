@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B80F569263695BA00650A11 /* APIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F568263695BA00650A11 /* APIMethods.swift */; };
+		5B80F56D263695C500650A11 /* APIPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F56C263695C500650A11 /* APIPaths.swift */; };
+		5B80F570263695D800650A11 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F56F263695D800650A11 /* APIRequest.swift */; };
+		5B80F5752636965B00650A11 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F5742636965B00650A11 /* NetworkService.swift */; };
+		5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F57A26369A9100650A11 /* PhotoListRequest.swift */; };
+		5B80F57F26369AA200650A11 /* PhotoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80F57E26369AA200650A11 /* PhotoListResponse.swift */; };
 		5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */; };
 		5BDA2E3326368D77009E6AD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */; };
 		5BDA2E3526368D77009E6AD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA2E3426368D77009E6AD3 /* ViewController.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B80F568263695BA00650A11 /* APIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMethods.swift; sourceTree = "<group>"; };
+		5B80F56C263695C500650A11 /* APIPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPaths.swift; sourceTree = "<group>"; };
+		5B80F56F263695D800650A11 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		5B80F5742636965B00650A11 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5B80F57A26369A9100650A11 /* PhotoListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListRequest.swift; sourceTree = "<group>"; };
+		5B80F57E26369AA200650A11 /* PhotoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListResponse.swift; sourceTree = "<group>"; };
 		5BDA2E2D26368D77009E6AD3 /* PhotosObjectDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosObjectDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDA2E3026368D77009E6AD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BDA2E3226368D77009E6AD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +49,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B80F5662636958000650A11 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5732636964900650A11 /* Services */,
+				5B80F567263695A600650A11 /* Utils */,
+				5B80F57826369A4B00650A11 /* ResquestModels */,
+				5B80F57926369A6800650A11 /* ResponseModels */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		5B80F567263695A600650A11 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F568263695BA00650A11 /* APIMethods.swift */,
+				5B80F56C263695C500650A11 /* APIPaths.swift */,
+				5B80F56F263695D800650A11 /* APIRequest.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5B80F5732636964900650A11 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F5742636965B00650A11 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5B80F57826369A4B00650A11 /* ResquestModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F57A26369A9100650A11 /* PhotoListRequest.swift */,
+			);
+			path = ResquestModels;
+			sourceTree = "<group>";
+		};
+		5B80F57926369A6800650A11 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B80F57E26369AA200650A11 /* PhotoListResponse.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
 		5BDA2E2426368D77009E6AD3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +113,9 @@
 		5BDA2E2F26368D77009E6AD3 /* PhotosObjectDetection */ = {
 			isa = PBXGroup;
 			children = (
-				5BDA2E4B26368E21009E6AD3 /* MLMpdels */,
 				5BDA2E4726368D93009E6AD3 /* App */,
+				5BDA2E4B26368E21009E6AD3 /* MLMpdels */,
+				5B80F5662636958000650A11 /* NetworkLayer */,
 				5BDA2E3426368D77009E6AD3 /* ViewController.swift */,
 				5BDA2E3926368D79009E6AD3 /* Assets.xcassets */,
 			);
@@ -153,9 +211,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BDA2E3526368D77009E6AD3 /* ViewController.swift in Sources */,
+				5B80F57F26369AA200650A11 /* PhotoListResponse.swift in Sources */,
+				5B80F569263695BA00650A11 /* APIMethods.swift in Sources */,
+				5B80F5752636965B00650A11 /* NetworkService.swift in Sources */,
 				5BDA2E4D26368E3B009E6AD3 /* YOLOv3.mlkitmodel in Sources */,
+				5B80F57B26369A9100650A11 /* PhotoListRequest.swift in Sources */,
 				5BDA2E3126368D77009E6AD3 /* AppDelegate.swift in Sources */,
+				5B80F570263695D800650A11 /* APIRequest.swift in Sources */,
 				5BDA2E3326368D77009E6AD3 /* SceneDelegate.swift in Sources */,
+				5B80F56D263695C500650A11 /* APIPaths.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
