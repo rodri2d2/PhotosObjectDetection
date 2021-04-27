@@ -8,6 +8,6 @@
 import Foundation
 
 
-protocol PhotoListViewModelDelegate: class {
+protocol PhotoListViewModelDelegate: AnyObject {
     func didFinishLoadPhotos()
 }

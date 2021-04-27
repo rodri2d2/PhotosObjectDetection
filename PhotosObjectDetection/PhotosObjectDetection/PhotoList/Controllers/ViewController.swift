@@ -93,7 +93,15 @@ extension ViewController{
 // MARK: - Extension for UISearchBarDelegate
 extension ViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
+        
+        if !searchText.isEmpty{
+            print(searchText)
+            self.viewModel.searchForThis(text: searchText)
+        }else{
+            self.viewModel.viewWasLoad()
+        }
+        
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
