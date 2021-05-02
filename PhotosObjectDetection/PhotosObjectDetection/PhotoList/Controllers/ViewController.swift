@@ -158,13 +158,20 @@ extension ViewController: PhotoListViewModelDelegate{
 // MARK: - Extension for Navigation to detail
 extension ViewController{
     
+    
+    /*
+     
+        To keep app architecture clean coordinator pattern is the best implementation.
+        However my Goal is only find out how to make Vision Requests and that's why I will
+        try to maintain a sort of KISS methodology
+     
+     */
     private func navigatoToDetail(itemIndex: IndexPath){
         if let item = self.viewModel.cellForItemAt(indexPath: itemIndex){
             if let image = UIImage(data: item.photoData!){
-                
-                let detailController = PhotoDetailViewController(image: image)
+                let viewModel = PhotoDetailViewModel()
+                let detailController = PhotoDetailViewController(image: image, viewModel: viewModel)
                 self.navigationController?.pushViewController(detailController, animated: true)
-                
             }
         }
     

@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import Vision
 
 class PhotoDetailViewController: UIViewController {
-
     
     // MARK: - Class properties
     private let image: UIImage
@@ -36,6 +36,11 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //
+        self.viewModel.delegate = self
+        
+        self.viewModel.viewWasLoad(image: image.jpegData(compressionQuality: CGFloat(1))!)
+        //
         setupOutlets()
         
     }
@@ -60,4 +65,55 @@ extension PhotoDetailViewController{
         self.photoView.image = image
     }
     
+}
+
+
+// MARK: - Extension for Drawing recognized Objects
+extension PhotoDetailViewController{
+    
+    private func drawDetectecObjectBounds(recognizedObjects: [VNRecognizedObjectObservation]){
+        DispatchQueue.main.async {
+                    guard let image = self.photoView.image else {return}
+                    
+                    let imageSize = image.size
+                    var imageTransform = CGAffineTransform.identity.scaledBy(x: 1, y: -1).translatedBy(x: 0, y: -imageSize.height)
+                    imageTransform = imageTransform.scaledBy(x: imageSize.width, y: imageSize.height)
+                    UIGraphicsBeginImageContextWithOptions(imageSize, true, 0)
+                   
+                    let graphicsContext = UIGraphicsGetCurrentContext()
+                    image.draw(in: CGRect(origin: .zero, size: imageSize))
+                    graphicsContext?.saveGState()
+                    graphicsContext?.setLineJoin(.round)
+                    graphicsContext?.setLineWidth(4.0)
+                    graphicsContext?.setFillColor(red: 0, green: 1, blue: 0, alpha: 0.3)
+                    graphicsContext?.setStrokeColor(UIColor.green.cgColor)
+                    
+                    recognizedObjects.forEach { (observation) in
+                    
+                        let observationBounds = observation.boundingBox.applying(imageTransform)
+                        graphicsContext?.addRect(observationBounds)
+                    }
+//                    if objectsName.count == 0 {
+//                        self.labelExample.text = "No se han encontrado objetos"
+//                    } else {
+//                        self.labelExample.text = objectsName
+//                    }
+                    graphicsContext?.drawPath(using: CGPathDrawingMode.fillStroke)
+                    graphicsContext?.restoreGState()
+                    
+                    let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+
+                    self.photoView.image = drawnImage
+                }
+    }
+    
+}
+
+
+// MARK: - Extension for PhotoDetailViewModelDelegate
+extension PhotoDetailViewController: PhotoDetailViewModelDelegate{
+    func didReconizedObjects(recognizedObjects: [VNRecognizedObjectObservation]) {
+        self.drawDetectecObjectBounds(recognizedObjects: recognizedObjects)
+    }
 }
