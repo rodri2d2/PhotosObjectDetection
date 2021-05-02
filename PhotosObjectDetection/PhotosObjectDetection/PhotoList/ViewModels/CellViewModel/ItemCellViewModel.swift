@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ItemCellViewModel{
+class ItemCellViewModel {
     
     var delegate:    ItemCellViewModelDelegate?
     let authorText:  String
@@ -23,7 +23,6 @@ class ItemCellViewModel{
 
         dataManager.fetchImage(imageUrl: imageUrl) { (data) in
             self.photoData = data
-
             self.delegate?.didFinishLoadImageData()
         }
         

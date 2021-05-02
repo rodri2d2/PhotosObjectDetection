@@ -8,7 +8,7 @@
 import Foundation
 import Vision
 import CoreML
-
+import UIKit
 
 class PhotoListViewModel{
     
@@ -16,15 +16,24 @@ class PhotoListViewModel{
     let dataManager:               MainDataManager
     var delegate:                  PhotoListViewModelDelegate?
     private var lastLoad:          Date?
-    private var itemCellViewModel: [ItemCellViewModel] = []
     
-
+    //CellViewModels
+    private var itemCellViewModel:         [ItemCellViewModel] = []
+    private var filteredItemCellViewModel: [ItemCellViewModel] = []
+    
     //ML model
     private lazy var yoloModel: VNCoreMLModel? = {
         let configuration = MLModelConfiguration()
         let model = try? VNCoreMLModel(for: YOLOv3(configuration: configuration).model)
         return model
     }()
+    
+    //ML Resquest
+    private var arrayOfMLRequests: [VNCoreMLRequest] = []
+    
+    //TEST
+    var photoInfomacion: Data = Data()
+    var observation = VNRecognizedObjectObservation()
     
     init(dataManager: MainDataManager) {
         self.dataManager = dataManager
@@ -47,9 +56,8 @@ class PhotoListViewModel{
     private func loadLocalData(predicate: String = ""){
         
         if !predicate.isEmpty {
-            for item in itemCellViewModel{
-                searchInsideImage(item: item, predicate: predicate)
-            }
+//            for item in itemCellViewModel{
+//            }
         }else{
             if self.itemCellViewModel.count > 0{
                 delegate?.didFinishLoadPhotos()
@@ -61,9 +69,30 @@ class PhotoListViewModel{
     }
     
     
-    private func loadDataFromSearch(searchText: String){
-        
+    func loadDataFromSearch(searchText: String){
+        for item in itemCellViewModel{
+            if let image = item.photoData{
+                doPerformMLRequest(imageData: image)
+            }
+        }
     }
+    
+    
+    private func doPerformMLRequest(imageData: Data){
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                
+                if let req = self.generateMLResquestArray(predicate: "bird"){
+                    let handler = VNImageRequestHandler(data: imageData, options: [:])
+                    try handler.perform([req])
+                }
+            } catch  {
+                print("Error en el handler --> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
     
     private func prepareLoadedData(photListData: [Photo]){
         self.itemCellViewModel = photListData.map({ (photo) -> ItemCellViewModel in
@@ -72,56 +101,35 @@ class PhotoListViewModel{
         self.delegate?.didFinishLoadPhotos()
     }
     
-    private func searchInsideImage(item: ItemCellViewModel, predicate: String){
+    private func generateMLResquestArray(predicate: String ) -> VNCoreMLRequest? {
+        if let model = self.yoloModel{
+            
+            let request = VNCoreMLRequest(model: model) { visionResquestResult, error in
+                if let _ = error {
+                    print("resquest VN error !")
+                    return
+                }
+                
+                guard let results = visionResquestResult.results as? [VNRecognizedObjectObservation] else { return}
+                
+                guard let observation = results.first else {
+                    return
+                }
+                
+                if observation.labels.first?.identifier == predicate
+                    &&
+                   observation.confidence > 0.9 {
+                    
+                    print(observation.labels.first?.identifier ?? "nada")
+                    print(observation.confidence)
+                    
+                }
+            }
+            return request
+        }
         
-//        var newArrayOfItemCellViewModel: [ItemCellViewModel]  = []
-        
-        
-  
-//            do {
-//
-//                //
-//                let request = VNCoreMLRequest(model: self.yoloModel!) { (reqResult, error) in
-//                    if let _ = error {
-//                        print("resquest VN error !")
-//                        return
-//                    }
-//
-//                    guard let results = reqResult.results as? [VNRecognizedObjectObservation] else { return}
-//
-//                    guard let observation = results.first else{
-//                        return
-//                    }
-//
-//                    if observation.labels.first?.identifier == predicate{
-//                        newArrayOfItemCellViewModel.append(ItemCellViewModel(photo: item.photo, dataManager: self.dataManager))
-//                    }
-//                }
-//                //
-//                if let image = item.photoData{
-//                    let handler = VNImageRequestHandler(data: image, options: [:])
-//                    //
-//                    try handler.perform([request])
-//                }
-//
-//
-//            } catch {
-//
-//            }
-//
-//
-//
-////        if newArrayOfItemCellViewModel.count > 0 {
-////            self.itemCellViewModel.removeAll()
-////            self.itemCellViewModel = newArrayOfItemCellViewModel
-////            self.delegate?.didFinishLoadPhotos()
-////        }
-////
-//
+        return nil
     }
-    
-    
-    
     
     
 }
@@ -130,19 +138,19 @@ class PhotoListViewModel{
 extension PhotoListViewModel{
     
     func viewWasLoad(){
-        
-        if lastLoad == nil {
-            lastLoad = Date()
-            loadDataFromServer()
-        }else{
-            let expirationTime: TimeInterval = 60 * 10
-            guard let lastLoad = self.lastLoad else {  return }
-            if Date().timeIntervalSince(lastLoad) < expirationTime {
-                loadLocalData()
-            }
-        }
+        loadDataFromServer()
         
         
+        //        if lastLoad == nil {
+        //            lastLoad = Date()
+        //            loadDataFromServer()
+        //        }else{
+        //            let expirationTime: TimeInterval = 60 * 10
+        //            guard let lastLoad = self.lastLoad else {  return }
+        //            if Date().timeIntervalSince(lastLoad) < expirationTime {
+        //                loadLocalData()
+        //            }
+        //        }
     }
     
     func numberOfItemsInSection() -> Int {

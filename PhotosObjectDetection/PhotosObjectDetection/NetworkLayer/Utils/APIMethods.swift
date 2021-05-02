@@ -11,5 +11,5 @@ enum HTTPMethod: String{
     case get  = "GET"
  
     //
-    var method: String{ return self.rawValue }
+    var method: String { return self.rawValue }
 }

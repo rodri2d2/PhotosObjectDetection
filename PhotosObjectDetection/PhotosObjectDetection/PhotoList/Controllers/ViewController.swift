@@ -31,7 +31,6 @@ class ViewController: UIViewController {
     
     
     // MARK: - Lifecycle
-    
     init(viewModel: PhotoListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -45,9 +44,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,15 +89,10 @@ extension ViewController{
 // MARK: - Extension for UISearchBarDelegate
 extension ViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if !searchText.isEmpty{
-            print(searchText)
-            self.viewModel.searchForThis(text: searchText)
-        }else{
-            self.viewModel.viewWasLoad()
+        //
+        if !searchText.isEmpty {
+            self.viewModel.loadDataFromSearch(searchText: searchText)
         }
-        
-        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -138,7 +129,8 @@ extension ViewController: UICollectionViewDataSource{
 extension ViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        navigatoToDetail(itemIndex: indexPath)
     }
     
     
@@ -154,9 +146,32 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 
 
-
+// MARK: - Extension for PhotoListViewModelDelegate
 extension ViewController: PhotoListViewModelDelegate{
     func didFinishLoadPhotos() {
         self.photoCollectionView.reloadData()
     }
 }
+
+
+
+// MARK: - Extension for Navigation to detail
+extension ViewController{
+    
+    private func navigatoToDetail(itemIndex: IndexPath){
+        if let item = self.viewModel.cellForItemAt(indexPath: itemIndex){
+            if let image = UIImage(data: item.photoData!){
+                
+                let detailController = PhotoDetailViewController(image: image)
+                self.navigationController?.pushViewController(detailController, animated: true)
+                
+            }
+        }
+    
+        
+    }
+    
+}
+
+
+

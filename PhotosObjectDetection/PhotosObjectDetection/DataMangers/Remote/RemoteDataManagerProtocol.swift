@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RemoteDataManagerProtocol {
-    func fetchPhotoList(completion: @escaping (Result<[Photo]?, Error>) -> ())
     
+    func fetchPhotoList(completion: @escaping (Result<[Photo]?, Error>) -> ())
     
     //Image Service
     func fetchImage(imageUrl: String, completion: @escaping (Data) -> ())

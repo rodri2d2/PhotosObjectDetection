@@ -20,7 +20,7 @@ struct PhotoListRequest: APIRequest {
     }
     
     private mutating func setParameters(){
-        parameters["page"]   = "1"
+        parameters["page"]   = "2"
         parameters["limit"]  = "100"
     }
     

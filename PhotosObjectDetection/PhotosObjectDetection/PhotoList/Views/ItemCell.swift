@@ -44,8 +44,6 @@ class ItemCell: UICollectionViewCell {
         return view
     }()
     
-    
-
     private lazy var authorLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.boldSystemFont(ofSize: 20)
@@ -90,7 +88,6 @@ extension ItemCell{
     private func setupMainContainer(){
         self.contentView.addSubview(mainContainer)
         self.mainContainer.pin(to: contentView)
-        
     }
     
     private func setupPhotoImageView(){
